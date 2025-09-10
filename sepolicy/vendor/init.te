@@ -1,3 +1,2 @@
 set_prop(vendor_init, vendor_fp_prop)
 set_prop(vendor_init, vendor_qcc_prop)
-allow init hal_dms_default:process { siginh rlimitinh transition };
