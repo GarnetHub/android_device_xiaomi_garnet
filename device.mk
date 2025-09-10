@@ -16,9 +16,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# common
-$(call inherit-product-if-exists, device/xiaomi/common/device.mk)
-
 # MiuiCamera
 $(call inherit-product-if-exists, device/xiaomi/miuicamera-garnet/device.mk)
 
