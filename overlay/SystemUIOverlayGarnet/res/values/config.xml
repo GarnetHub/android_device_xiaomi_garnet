@@ -20,4 +20,10 @@
 
     <!-- Preferred max refresh rate at keyguard, if supported by the display. -->
     <integer name="config_keyguardMaxRefreshRate">60</integer>
+	
+	<!-- media controls -->
+    <bool name="config_mediaControlsTurbulenceByDefault">false</bool> 
+ 
+    <!-- Whether to play turbulence noise after clicking the play button -->
+    <bool name="config_turbulenceNoise">false</bool>
 </resources>
