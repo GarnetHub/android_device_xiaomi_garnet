@@ -98,9 +98,9 @@ BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=garnet
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435
 TARGET_KERNEL_CONFIG := \
-    gki_defconfig \
-    vendor/parrot_GKI.config \
-    vendor/garnet_GKI.config
+    garnet_defconfig \
+    vendor/kernelsu.config \
+    vendor/debugfs.config
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
