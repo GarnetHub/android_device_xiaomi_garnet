@@ -267,6 +267,10 @@ $(foreach sku, CN GL JP, \
         frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(sku)/com.android.nfc_extras.xml \
         frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(sku)/com.nxp.mifare.xml))
 
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    DSPVolumeSynchronizer
+
 # Overlay
 PRODUCT_PACKAGES += \
     ApertureOverlayGarnet \
