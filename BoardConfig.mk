@@ -70,11 +70,12 @@ BOARD_USES_QCOM_HARDWARE := true
 # HIDL
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    $(DEVICE_PATH)/configs/hidl/device_framework_compatibility_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
     hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
 
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/hidl/manifest.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
 
 ODM_MANIFEST_SKUS += IN
 ODM_MANIFEST_IN_FILES := $(DEVICE_PATH)/configs/hidl/manifest_nonfc.xml
@@ -182,6 +183,11 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := parrot
+
+# Dolby Vision
+SOONG_CONFIG_NAMESPACES += dolby_vision
+SOONG_CONFIG_dolby_vision += enabled
+SOONG_CONFIG_dolby_vision_enabled := true
 
 # Recovery
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true

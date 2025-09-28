@@ -199,7 +199,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/bin/init.dolby_fix.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.dolby_fix.sh
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -228,15 +229,49 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
+# Media Codec Configuration Files
 PRODUCT_COPY_FILES += \
-    $(AUDIO_HAL_DIR)/configs/common/codec2/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml
-
-# Media
+    $(LOCAL_PATH)/configs/media/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby_audio.xml
+	
+# Media Seccomp Policy Files
 PRODUCT_COPY_FILES += \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.base-arm.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.base-arm.policy \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.base-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.base-arm64.policy \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.ext-arm.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.ext-arm.policy \
     $(AUDIO_HAL_DIR)/configs/common/codec2/service/1.0/c2audio.vendor.ext-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy \
+
+# Media Codec Packages
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.2.vendor \
+    libavservices_minijail.vendor \
+    libcodec2_hidl@1.2.vendor \
+    libcodec2_soft_common.vendor
+
+# Media Dolby Packages
+PRODUCT_PACKAGES += \
+    DolbyManager
+
+# Media Dolby VNDK Library
+PRODUCT_PACKAGES += \
+    libstagefright_foundation-v33
+
+# Media Dolby and Codec2 Vendor Properties
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1 \
+    vendor.audio.dolby.ds2.enabled=false \
+    vendor.audio.dolby.ds2.hardbypass=false \
+    vendor.audio.c2.preferred=true \
+    vendor.qc2audio.suspend.enabled=true \
+    vendor.qc2audio.per_frame.flac.dec.enabled=true
+
+# Media Dolby Configuration Files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/dolby/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml
+
+# Media - Dolby vision
+PRODUCT_PACKAGES += \
+    libcodec2_hidl_shim.vendor
 
 # Memtrack
 PRODUCT_PACKAGES += \

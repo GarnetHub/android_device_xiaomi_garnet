@@ -70,10 +70,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/camera/pureShot_parameter.xml'
     ): blob_fixup()
         .regex_replace(r'=(\d+)>', r'="\1">'),
-    'vendor/etc/media_codecs_parrot_v0.xml': blob_fixup()
-        .regex_replace('.+media_codecs_(google_audio|google_c2|google_telephony|vendor_audio).+\n', ''),
-    'vendor/etc/vintf/manifest/c2_manifest_vendor.xml': blob_fixup()
-        .regex_replace('.+dolby.+\n', ''),
     (
         'vendor/lib64/hw/camera.qcom.so',
         'vendor/lib64/hw/com.qti.chi.override.so',
@@ -116,9 +112,15 @@ blob_fixups: blob_fixups_user_type = {
             'android.hardware.security.sharedsecret-V1-ndk_platform.so',
             'android.hardware.security.sharedsecret-V1-ndk.so'
         )
-        .add_needed('android.hardware.security.rkp-V1-ndk.so'),
+        .add_needed('android.hardware.security.rkp-V1-ndk.so'),       
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
+        ('vendor/lib64/c2.dolby.avc.dec.so', 'vendor/lib64/c2.dolby.avc.sec.dec.so', 'vendor/lib64/c2.dolby.hevc.dec.so', 'vendor/lib64/c2.dolby.hevc.sec.dec.so'): blob_fixup()
+        .add_needed('libstagefright_foundation-v33.so'),
+        ('vendor/bin/hw/dolbycodec2'): blob_fixup()
+        .add_needed('libstagefright_foundation-v33.so'),
+        ('vendor/lib64/c2.dolby.client.so'): blob_fixup()
+        .add_needed('libcodec2_hidl_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
