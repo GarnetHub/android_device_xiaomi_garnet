@@ -97,7 +97,7 @@ vendor.display.disable_excl_rect=0
 vendor.display.disable_excl_rect_partial_fb=1
 vendor.display.disable_hw_recovery_dump=1
 vendor.display.disable_offline_rotator=1
-vendor.display.disable_scaler=0
+vendor.display.disable_scaler=1
 vendor.display.disable_sdr_dimming=1
 vendor.display.disable_sdr_histogram=1
 vendor.display.disable_stc_dimming=1
@@ -105,7 +105,7 @@ vendor.display.enable_async_powermode=1
 vendor.display.enable_async_vds_creation=1
 vendor.display.enable_dpps_dynamic_fps=0
 vendor.display.enable_hdr10_gpu_target=1
-vendor.display.enable_optimize_refresh=0
+vendor.display.enable_optimize_refresh=1
 vendor.display.idle_time=0
 vendor.display.override_doze_mode=1
 vendor.display.use_smooth_motion=1
@@ -169,7 +169,7 @@ vendor.gralloc.disable_ubwc=0
 # HWUI
 debug.hwui.use_hint_manager=true
 debug.sf.enable_adpf_cpu_hint=true
-debug.hwui.target_cpu_time_percent=30
+debug.hwui.target_cpu_time_percent=10
 
 # Keystore
 ro.hardware.keystore_desede=true
@@ -234,3 +234,17 @@ persist.vendor.vcb.enable=false
 
 # WLAN
 wifi.aware.interface=wifi-aware0
+
+# Tweaks
+ro.config.avoid_gfx_accel=true
+debug.sf.region_sampling_timer_timeout_ns=200000000
+debug.sf.region_sampling_period_ns=200000000
+ro.egl.blobcache.multifile=true
+ro.egl.blobcache.multifile_limit=33554432
+ro.surface_flinger.support_kernel_idle_timer=true
+vendor.display.disable_rotator_downscale=1
+debug.sf.frame_rate_multiple_threshold=60
+
+# Adaptive Suspend
+suspend.short_suspend_threshold_millis=5000
+
