@@ -464,8 +464,5 @@ PRODUCT_COPY_FILES += \
 # Sign key
 -include vendor/lineage-priv/keys/keys.mk
 
-# LiteGApps
--include vendor/gapps/arm64/arm64-vendor.mk
-
 # Vendor
 $(call inherit-product, vendor/xiaomi/garnet/garnet-vendor.mk)
