@@ -238,7 +238,6 @@ debug.sf.region_sampling_timer_timeout_ns=200000000
 debug.sf.region_sampling_period_ns=200000000
 ro.egl.blobcache.multifile=true
 ro.egl.blobcache.multifile_limit=33554432
-ro.surface_flinger.support_kernel_idle_timer=true
 vendor.display.disable_rotator_downscale=1
 
 # Adaptive Suspend
