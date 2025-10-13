@@ -15,7 +15,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from garnet device
 $(call inherit-product, device/xiaomi/garnet/device.mk)
 
-WITH_GMS := true
+WITH_GMS := false
 
 PRODUCT_NAME := lineage_garnet
 PRODUCT_DEVICE := garnet
